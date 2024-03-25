@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/pokedex.css') }}">
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="video-bg">
+        <video width="320" height="240" autoplay loop muted>
+            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="app">
+        <div class="header">
+            <div class="menu-circle"></div>
+            <div class="header-menu">
+                <a class="menu-link" href="{{ url_for('home') }}">Home</a>
+                <a class="menu-link" href="{{ url_for('pokedex') }}">Pokedex</a>
+                <a class="menu-link is-active" href="{{ url_for('favorites') }}">Favorites</a>
+                <a class="menu-link" href="{{ url_for('logout') }}">Log Out</a>
+            </div>
+            <form class="search-bar" action="" onsubmit="searchPokemon(event)">
+                <input type="text" name="pokemon" autocomplete="off" placeholder="Search">
+            </form>
+        </div>
+        <div class="wrapper">
+            <div class="main-container">
+                <div class="content-wrapper">
+                    <div class="container mb-5">
+                        <div class="card shadow bg">
+                            <div class="card-body">
+                                <!-- Tabla -->
+                                <table class="table table-bordered">
+                                    <thead class="text-center">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Tipos</th>
+                                        <th scope="col">Fecha</th>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        <!-- Declara un bucle -->
+                                        {% for d in data %}
+                                        <tr>
+                                            <td>{{d.id}}</td>
+                                            <td>{{d.name}}</td>
+                                            <td>{{d.type}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay-app"></div>
+    </div>
+    <!-- JavaScript -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="/static/javascript/script.js"></script>
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

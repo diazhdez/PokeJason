@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/login.css') }}">
+</head>
+
+<body>
+    <div class="video-bg">
+        <video width="320" height="240" autoplay loop muted>
+            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    {% block body %}
+
+    {% endblock %}
+</body>
+
+</html>
